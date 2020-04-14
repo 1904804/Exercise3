@@ -59,17 +59,17 @@ void main()
 				printf_s("Entry %d is \x9C%.2f \n\n\n\n", i +1, prices[i]);
 			}
 			break;
-		case 3://prints out the total prices
+		case 3://prints out the total prices via a function to loop through the array
 			
 			getTotalPrice();
 			printf_s("The total price for %d entries is \x9C%.2f \n\n\n\n", arrayPostion, totalPrice);
-			totalPrice = 0.00;
+			totalPrice = 0.00;//resets totalPrice so it`s not double on the next pass
 			break;
-		case 4:
+		case 4://does the convertion to euro`s using the constant and the function to loop through the array
 			getTotalPrice();
 			convertedPrice = totalPrice * euroConversion;
 			printf_s("The price in Euros is - %.2f\n\n\n\n" , convertedPrice);
-			totalPrice = 0.00;
+			totalPrice = 0.00;//resets totalPrice so it`s not double on the next pass
 			break;
 		case 5:
 			printf_s("Thank you for using this program.");
@@ -84,7 +84,7 @@ void main()
 	return 0;
 }
 
-void getTotalPrice()
+void getTotalPrice()//function to loop through the array
 {
 	for (i = 0; i <= arrayPostion - 1; i++)
 	{
