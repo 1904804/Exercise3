@@ -7,18 +7,20 @@
 //initialize constant variable
 #define euroConversion 1.15
 
+//set variables as global so they can be accessed by functions
+float prices[20];
+float totalPrice = 0.00;
+float convertedPrice;
+int option = 6;//set one above the last option
+int arrayPostion = 0;
+int i;
 
-
-
+//prototype functions
+void getTotalPrice(void);
 
 void main()
 {
-	float prices[20];
-	float totalPrice = 0.00;
-	float convertedPrice;
-	int option = 6;//set one above the last option
-	int arrayPostion = 0;
-	int i;
+	
 	
 
 	
@@ -59,19 +61,15 @@ void main()
 			break;
 		case 3://prints out the total prices
 			
-			for (i = 0; i <= arrayPostion -1; i++)
-			{
-				totalPrice = totalPrice + prices[i];
-			}
+			getTotalPrice();
 			printf_s("The total price for %d entries is \x9C%.2f \n\n\n\n", arrayPostion, totalPrice);
+			totalPrice = 0.00;
 			break;
 		case 4:
-			for (i = 0; i <= arrayPostion - 1; i++)
-			{
-				totalPrice = totalPrice + prices[i];
-			}
+			getTotalPrice();
 			convertedPrice = totalPrice * euroConversion;
-			printf_s("The price in Euros is - %f\n\n\n\n" , convertedPrice);
+			printf_s("The price in Euros is - %.2f\n\n\n\n" , convertedPrice);
+			totalPrice = 0.00;
 			break;
 		case 5:
 			printf_s("Thank you for using this program.");
@@ -86,4 +84,10 @@ void main()
 	return 0;
 }
 
-
+void getTotalPrice()
+{
+	for (i = 0; i <= arrayPostion - 1; i++)
+	{
+		totalPrice = totalPrice + prices[i];
+	}
+}
